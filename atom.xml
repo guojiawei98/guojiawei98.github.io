@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>琐事</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-12T13:19:29.089Z</updated>
+  <updated>2018-12-16T08:42:25.689Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>baba</title>
+    <link href="http://yoursite.com/2018/12/16/baba/"/>
+    <id>http://yoursite.com/2018/12/16/baba/</id>
+    <published>2018-12-16T08:42:25.000Z</published>
+    <updated>2018-12-16T08:42:25.689Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
