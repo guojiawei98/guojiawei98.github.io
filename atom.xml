@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-13T07:50:59.325Z</updated>
+  <updated>2019-04-13T09:04:46.942Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode---字符串</title>
+    <link href="http://yoursite.com/2019/04/13/string/"/>
+    <id>http://yoursite.com/2019/04/13/string/</id>
+    <published>2019-04-13T08:04:40.000Z</published>
+    <updated>2019-04-13T09:04:46.942Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="字符串简介"><a href="#字符串简介" class="headerlink" title="字符串简介"></a>字符串简介</h1><p>字符串实际上是一个 unicode 字符数组。</p><h4 id="比较函数"><a href="#比较函数" class="headerlink" title="比较函数"></a>比较函数</h4><p>字符串有它自己的比较函数。</p><p>在C++中，我们可以使用 “==” 来比较两个字符串。</p><p>在Java中，我们可能无法使用 “==” 来比较两个字符串。当我们使用  “==” 时，它实际上会比较这两个对象是否是同一个对象。我们可以用equal()函数来比较两个字符串。</p><h4 id="是否可变"><a href="#是否可变" class="headerlink" title="是否可变"></a>是否可变</h4><p>不可变意味着一旦字符串被初始化，你就无法改变它的内容。</p><p>在某些语言（如 C ++）中，字符串是可变的。 也就是说，你可以像在数组中那样修改字符串。<br>在其他一些语言（如  Java）中，字符串是不可变的。</p><h4 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h4><p>不可变字符串无法被修改。只修改其中的一个字符，也必须创建一个新的字符串。你应该非常小心字符串连接。在 Java 中，由于字符串是不可变的，因此在连接时首先为新字符串分配足够的空间，复制旧字符串中的内容并附加到新字符串。因此，总时间复杂度将是O(n2)。</p><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>如果你希望你的字符串是可变的，这里有一些替代方案：</p><ol><li>如果你确实希望你的字符串是可变的，则可以将其转换为字符数组。</li><li>如果你经常必须连接字符串，最好使用一些其他的数据结构，如 StringBuilder 。 以下代码以 O(n) 的复杂度运行。</li></ol><h4 id="区别String、StringBuffer和StringBuilder"><a href="#区别String、StringBuffer和StringBuilder" class="headerlink" title="区别String、StringBuffer和StringBuilder"></a>区别String、StringBuffer和StringBuilder</h4><ol><li>String：字符串常量，即String对象一旦创建之后该对象是不可更改的，适用于少量的字符串操作的情况。</li><li>StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况（线程不安全）</li><li>StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况（线程安全）</li><li>运行速度，或者说是执行速度，在这方面运行速度快慢为：StringBuilder &gt; StringBuffer &gt; String</li></ol><hr><h3 id="二进制求和"><a href="#二进制求和" class="headerlink" title="二进制求和"></a>二进制求和</h3><p>给定两个二进制字符串，返回他们的和（用二进制表示）。</p><p>输入为非空字符串且只包含数字 1 和 0。</p><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><p>输入: a = “11”, b = “1”</p><p>输出: “100”</p><h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>每次截取最后一位，进行相加。</p><ol><li>当和为2时，向前进1，置此位为0</li><li>和为3时（后位进了1，且此位是1+1），向前进1，置此位为1</li><li>和为0或1时，置此位为和</li><li>当最高位需要进1</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public String addBinary(String a, String b) &#123;</span><br><span class="line">        String result =&quot;&quot;;</span><br><span class="line">        int lengthA = a.length();</span><br><span class="line">        int lengthB = b.length();</span><br><span class="line">        int sum = 0;</span><br><span class="line">        while (lengthA &gt; 0 || lengthB &gt; 0) &#123;</span><br><span class="line">            if (lengthA &gt; 0) &#123;</span><br><span class="line">                sum += Integer.parseInt(a.substring(lengthA-1,lengthA));</span><br><span class="line">                lengthA--;</span><br><span class="line">            &#125;</span><br><span class="line">            if (lengthB &gt; 0) &#123;</span><br><span class="line">                sum += Integer.parseInt(b.substring(lengthB-1,lengthB));</span><br><span class="line">                lengthB--;</span><br><span class="line">            &#125;</span><br><span class="line">            if (sum == 2) &#123;</span><br><span class="line">                result = &quot;0&quot;+result;</span><br><span class="line">                sum = 1;</span><br><span class="line">            &#125; else if (sum == 3) &#123;</span><br><span class="line">                result = &quot;1&quot; + result;</span><br><span class="line">                sum = 1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                result = (sum + &quot;&quot;) + result;</span><br><span class="line">                sum = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (sum == 1) &#123;</span><br><span class="line">            result = &quot;1&quot; + result;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h3 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h3><p>编写一个函数来查找字符串数组中的最长公共前缀。</p><p>如果不存在公共前缀，返回空字符串 “”。</p><h4 id="示例-1-1"><a href="#示例-1-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">输出: &quot;fl&quot;</span><br></pre></td></tr></table></figure><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">输出: &quot;&quot;</span><br><span class="line">解释: 输入不存在公共前缀。</span><br><span class="line">`</span><br></pre></td></tr></table></figure><p>说明:所有输入只包含小写字母 a-z 。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public String longestCommonPrefix(String[] strs) &#123;</span><br><span class="line">        int count = strs.length;</span><br><span class="line">        String prefix = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">        if(count != 0)&#123;</span><br><span class="line">            prefix = strs[0];</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">            //关键代码，不断的从后往前截取字符串，然后与之相比，直到startsWith()返回true</span><br><span class="line">            while (!strs[i].startsWith(prefix)) &#123;</span><br><span class="line">                //startsWith() 方法用于检测字符串是否以指定的前缀开始</span><br><span class="line">                prefix = prefix.substring(0, prefix.length() - 1);</span><br><span class="line">                //substring()截取字符串</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return prefix;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;字符串简介&quot;&gt;&lt;a href=&quot;#字符串简介&quot; class=&quot;headerlink&quot; title=&quot;字符串简介&quot;&gt;&lt;/a&gt;字符串简介&lt;/h1&gt;&lt;p&gt;字符串实际上是一个 unicode 字符数组。&lt;/p&gt;
+&lt;h4 id=&quot;比较函数&quot;&gt;&lt;a href=&quot;#比较函数&quot; 
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode---二维数组</title>
@@ -37,11 +67,11 @@
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -66,11 +96,11 @@
       <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
     
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
       <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   

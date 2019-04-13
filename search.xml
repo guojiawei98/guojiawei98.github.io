@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode---字符串]]></title>
+    <url>%2F2019%2F04%2F13%2Fstring%2F</url>
+    <content type="text"><![CDATA[字符串简介字符串实际上是一个 unicode 字符数组。 比较函数字符串有它自己的比较函数。 在C++中，我们可以使用 “==” 来比较两个字符串。 在Java中，我们可能无法使用 “==” 来比较两个字符串。当我们使用 “==” 时，它实际上会比较这两个对象是否是同一个对象。我们可以用equal()函数来比较两个字符串。 是否可变不可变意味着一旦字符串被初始化，你就无法改变它的内容。 在某些语言（如 C ++）中，字符串是可变的。 也就是说，你可以像在数组中那样修改字符串。在其他一些语言（如 Java）中，字符串是不可变的。 修改操作不可变字符串无法被修改。只修改其中的一个字符，也必须创建一个新的字符串。你应该非常小心字符串连接。在 Java 中，由于字符串是不可变的，因此在连接时首先为新字符串分配足够的空间，复制旧字符串中的内容并附加到新字符串。因此，总时间复杂度将是O(n2)。 解决方案如果你希望你的字符串是可变的，这里有一些替代方案： 如果你确实希望你的字符串是可变的，则可以将其转换为字符数组。 如果你经常必须连接字符串，最好使用一些其他的数据结构，如 StringBuilder 。 以下代码以 O(n) 的复杂度运行。 区别String、StringBuffer和StringBuilder String：字符串常量，即String对象一旦创建之后该对象是不可更改的，适用于少量的字符串操作的情况。 StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况（线程不安全） StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况（线程安全） 运行速度，或者说是执行速度，在这方面运行速度快慢为：StringBuilder &gt; StringBuffer &gt; String 二进制求和给定两个二进制字符串，返回他们的和（用二进制表示）。 输入为非空字符串且只包含数字 1 和 0。 示例 1:输入: a = “11”, b = “1” 输出: “100” 分析：每次截取最后一位，进行相加。 当和为2时，向前进1，置此位为0 和为3时（后位进了1，且此位是1+1），向前进1，置此位为1 和为0或1时，置此位为和 当最高位需要进1 123456789101112131415161718192021222324252627282930public String addBinary(String a, String b) &#123; String result =&quot;&quot;; int lengthA = a.length(); int lengthB = b.length(); int sum = 0; while (lengthA &gt; 0 || lengthB &gt; 0) &#123; if (lengthA &gt; 0) &#123; sum += Integer.parseInt(a.substring(lengthA-1,lengthA)); lengthA--; &#125; if (lengthB &gt; 0) &#123; sum += Integer.parseInt(b.substring(lengthB-1,lengthB)); lengthB--; &#125; if (sum == 2) &#123; result = &quot;0&quot;+result; sum = 1; &#125; else if (sum == 3) &#123; result = &quot;1&quot; + result; sum = 1; &#125; else &#123; result = (sum + &quot;&quot;) + result; sum = 0; &#125; &#125; if (sum == 1) &#123; result = &quot;1&quot; + result; &#125; return result; &#125; 最长公共前缀编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1:12输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出: &quot;fl&quot; 示例 2:1234输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]输出: &quot;&quot;解释: 输入不存在公共前缀。` 说明:所有输入只包含小写字母 a-z 。 1234567891011121314151617public String longestCommonPrefix(String[] strs) &#123; int count = strs.length; String prefix = &quot;&quot;; if(count != 0)&#123; prefix = strs[0]; &#125; for (int i = 0; i &lt; count; i++) &#123; //关键代码，不断的从后往前截取字符串，然后与之相比，直到startsWith()返回true while (!strs[i].startsWith(prefix)) &#123; //startsWith() 方法用于检测字符串是否以指定的前缀开始 prefix = prefix.substring(0, prefix.length() - 1); //substring()截取字符串 &#125; &#125; return prefix; &#125;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>LeetCode</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode---二维数组]]></title>
     <url>%2F2019%2F04%2F13%2FdoubleArray%2F</url>
     <content type="text"><![CDATA[对角线遍历给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。 示例：1234567891011输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]]输出: [1,2,4,7,5,3,6,8,9]解释:&#123;% asset_img diagonal_traverse.png %&#125; 分析:分析一下遍历顺序的特点，可以看出，对角线的方向跟索引和（行的索引值+列的索引值）的奇偶性有关，然后加上边界情况，遍历的路线大概就出来了。 具体可以分为以下几种情况： 索引和为偶数 1.元素在第一行，往右走 2.元素在最后一列，往下走 3.其他情况，往右上走 索引和为奇数： 1.元素在第一列，往下走 2.元素在最后一行，往右走 3.其他情况，往左下走 按照这个思路，写出的方法如下：1234567891011121314151617181920212223242526272829303132333435363738394041public int[] findDiagonalOrder(int[][] matrix) &#123; if (matrix.length == 0 || matrix[0].length == 0) &#123; return new int[0]; &#125; //m代表行数，n代表列数 int m = matrix.length; int n = matrix[0].length; int[] result = new int[m * n]; //r代表当前行，c代表当前列 int r = 0; int c = 0; for (int i = 0; i &lt; result.length; i++) &#123; result[i] = matrix[r][c]; if ((r + c) % 2 == 0) &#123;//索引和为偶数 if (c == n - 1) &#123; r++; //在最后一列，往下走 &#125; else if (r == 0) &#123; c++; //在第一行，往右走 &#125; else &#123; c++; r--; //往右上走 &#125; &#125; else &#123;//索引和为奇数 if (r == m - 1) &#123; c++; //元素在最后一行，往右走 &#125; else if (c == 0) &#123; r++; //元素在第一列，往下走 &#125; else &#123; r++; c--; //往左下走 &#125; &#125; &#125; return result; &#125; 螺旋矩阵给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。 示例:输入:12345[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出: [1,2,3,6,9,8,7,4,5] 分析：思路和上道题的思路大致相同，可分为上右下左依此遍历(此题特别考察边界条件)：12345上：遍历区间[c,n]右：遍历区间[r+1,m]下：遍历区间[c,n-1]左：遍历区间[r,m]遍历一遍之后，r++，c++，m--，n--，继续遍历，直到(r&gt;m || c&gt;n),停止遍历 由上述思路可写出如下代码：1234567891011121314151617181920212223242526272829public List&lt;Integer&gt; spiralOrder(int[][] matrix) &#123; List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); if (matrix.length == 0) &#123; return list; &#125; int r = 0, m = matrix.length - 1; int c = 0, n = matrix[0].length - 1; while (r &lt;= m &amp;&amp; c &lt;= n) &#123; for (int i = c; i &lt;= n; i++) list.add(matrix[r][i]); for (int j = r + 1; j &lt;= m; j++) list.add(matrix[j][n]); if (r &lt; m &amp;&amp; c &lt; n) &#123; for (int i = n - 1; i &gt; c; i--) list.add(matrix[m][i]); for (int j = m; j &gt; r; j--) list.add(matrix[j][c]); &#125; r++; m--; c++; n--; &#125; return list; &#125; 杨辉三角给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。 在杨辉三角中，每个数是它左上方和右上方的数的和。 示例:123456789输入: 5输出:[ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]] 分析：每行的第一个数和最后一个数为1。 中间第i个数 = 上一行第i-1个数 + 上一行第i个数 由思路可得出：123456789101112131415public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) &#123; List&lt;List&lt;Integer&gt;&gt; outer = new ArrayList&lt;List&lt;Integer&gt;&gt;(); for (int i = 0; i &lt; numRows; i++) &#123; List&lt;Integer&gt; inner = new ArrayList&lt;&gt;(); for (int j = 0; j &lt;= i; j++) &#123; if (j == 0 || j == i) &#123; inner.add(1); &#125;else &#123; inner.add(outer.get(i - 1).get(j) + outer.get(i - 1).get(j - 1)); &#125; &#125; outer.add(inner); &#125; return outer; &#125;]]></content>
@@ -8,9 +21,9 @@
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>Java</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -21,9 +34,9 @@
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>Java</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
