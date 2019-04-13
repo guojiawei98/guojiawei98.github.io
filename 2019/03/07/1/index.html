@@ -159,15 +159,15 @@
   <meta name="description" content="分层的记账项目项目简介 这是一个家庭记账软件，主要功能有查询账务、多条件组合查询账务、添加账务、编辑账务、删除账务，并且分为四层：View层、Controller层、Service层、Dao层。这个小项目主要训练的是对项目的分析能力和程序分层能力。 View层  12345678910111213141516171819202122232425262728293031323334353637383">
 <meta name="keywords" content="Java分层结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个简单的Java分层项目Demo">
+<meta property="og:title" content="简单的Java分层项目Demo">
 <meta property="og:url" content="http://yoursite.com/2019/03/07/1/index.html">
 <meta property="og:site_name" content="琐事">
 <meta property="og:description" content="分层的记账项目项目简介 这是一个家庭记账软件，主要功能有查询账务、多条件组合查询账务、添加账务、编辑账务、删除账务，并且分为四层：View层、Controller层、Service层、Dao层。这个小项目主要训练的是对项目的分析能力和程序分层能力。 View层  12345678910111213141516171819202122232425262728293031323334353637383">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/03/07/1/QQ图片20190307132040.jpg">
-<meta property="og:updated_time" content="2019-03-07T07:01:23.238Z">
+<meta property="og:updated_time" content="2019-04-13T01:52:06.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个简单的Java分层项目Demo">
+<meta name="twitter:title" content="简单的Java分层项目Demo">
 <meta name="twitter:description" content="分层的记账项目项目简介 这是一个家庭记账软件，主要功能有查询账务、多条件组合查询账务、添加账务、编辑账务、删除账务，并且分为四层：View层、Controller层、Service层、Dao层。这个小项目主要训练的是对项目的分析能力和程序分层能力。 View层  12345678910111213141516171819202122232425262728293031323334353637383">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/07/1/QQ图片20190307132040.jpg">
 
@@ -188,7 +188,7 @@
   };
 </script>
 
-  <title>一个简单的Java分层项目Demo | 琐事</title>
+  <title>简单的Java分层项目Demo | 琐事</title>
   
 
 
@@ -458,7 +458,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一个简单的Java分层项目Demo
+          <h1 class="post-title" itemprop="name headline">简单的Java分层项目Demo
 
               
             
@@ -536,7 +536,7 @@
       
 
       
-        <h1 id="分层的记账项目"><a href="#分层的记账项目" class="headerlink" title="分层的记账项目"></a>分层的记账项目</h1><h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p> 这是一个家庭记账软件，主要功能有查询账务、多条件组合查询账务、添加账务<br>、编辑账务、删除账务，并且分为四层：View层、Controller层、Service层、Dao层。这个小项目主要训练的是对项目的分析能力和程序分层能力。</p>
+        <h1 id="分层的记账项目"><a href="#分层的记账项目" class="headerlink" title="分层的记账项目"></a>分层的记账项目</h1><h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p> 这是一个家庭记账软件，主要功能有查询账务、多条件组合查询账务、添加账务、编辑账务、删除账务，并且分为四层：View层、Controller层、Service层、Dao层。这个小项目主要训练的是对项目的分析能力和程序分层能力。</p>
 <h2 id="View层"><a href="#View层" class="headerlink" title="View层"></a>View层</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">public class MainView &#123;</span><br><span class="line">    private ZhangWuController controller = new ZhangWuController();</span><br><span class="line">    /*</span><br><span class="line">    * 实现界面效果</span><br><span class="line">    * 接受用户输入</span><br><span class="line">    * */</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;---------------管家婆家庭记账软件---------------&quot;);</span><br><span class="line">            System.out.println(&quot;1.添加账务　2.编辑账务　3.删除账务　4.查询账务　5.退出系统&quot;);</span><br><span class="line">            System.out.println(&quot;请输入要操作的功能序号[1-5]:&quot;);</span><br><span class="line">            //接受用户输入</span><br><span class="line">            int choose = sc.nextInt();</span><br><span class="line">            switch (choose)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    //添加账务</span><br><span class="line">                    addZhangWu();</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    //编辑账务</span><br><span class="line">                    editZhangWu();</span><br><span class="line">                    break;</span><br><span class="line">                case 3:</span><br><span class="line">                    //删除账务</span><br><span class="line">                    deleteZhangWu();</span><br><span class="line">                    break;</span><br><span class="line">                case 4:</span><br><span class="line">                    selectZhangwu();</span><br><span class="line">                    break;</span><br><span class="line">                case 5:</span><br><span class="line">                    System.out.println(&quot;bye&quot;);</span><br><span class="line">                    System.exit(0);</span><br><span class="line">                    break;</span><br><span class="line">                default:</span><br><span class="line">                    System.out.println(&quot;输入有误，请重输&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addZhangWu()&#123;</span><br><span class="line">        System.out.println(&quot;选择的是添加账务功能，请输入一下内容&quot;);</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;输入分类名称：&quot;);</span><br><span class="line">        String flname = sc.next();</span><br><span class="line">        System.out.println(&quot;输入金额：&quot;);</span><br><span class="line">        double money = sc.nextDouble();</span><br><span class="line">        System.out.println(&quot;输入账户：&quot;);</span><br><span class="line">        String zhanghu = sc.next();</span><br><span class="line">        System.out.println(&quot;输入日期：格式 XXXX-XX-XX&quot;);</span><br><span class="line">        String createtime = sc.next();</span><br><span class="line">        System.out.println(&quot;输入具体描述：&quot;);</span><br><span class="line">        String description = sc.next();</span><br><span class="line">        //zwid可设置为0，因为后面不接收zwid 省代码 也可以用set方法</span><br><span class="line">        ZhangWu zw = new ZhangWu(0, flname,money,zhanghu,createtime,description);</span><br><span class="line">        controller.addZhangWu(zw);</span><br><span class="line">        System.out.println(&quot;恭喜！添加成功！！&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>  <strong>View作用：</strong> View层就是视图层，即项目中的界面</p>
   <img src="/2019/03/07/1/QQ图片20190307132040.jpg" title="This is an example image">
@@ -593,8 +593,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/13/1/" rel="prev" title="leetCode---数组">
-                leetCode---数组 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/13/1/" rel="prev" title="LeetCode---数组">
+                LeetCode---数组 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -695,7 +695,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -710,7 +714,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
