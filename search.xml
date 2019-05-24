@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[spring依赖注入]]></title>
+    <url>%2F2019%2F05%2F24%2F1%2F</url>
+    <content type="text"><![CDATA[spring依赖注入（一）、概述 能注入的数据： 基本类型和 String 其他 bean 类型（在配置文件中或者注解中配置过的bean） 复杂类型/集合类型 IOC的作用：减低程序间的耦合（即依赖关系） 在当前类需要用到其他类的对象，由 Spring 为我们提供，而我们在配置文件中说明依赖关系的维护，这种方式就称为依赖注入。 （二）、注入方式 第一种：使用构造函数提供使用的标签：constructor-arg 标签所在位置：bean 标签的内部 标签中的属性： type : 用于指定要注入的数据类型，该类型也是构造函数中某个或某些参数的类型 index : 用于指定要注入的数据给构造函数中指定索引位置的参数赋值，索引的位置时从0开始 name(常用) : 用于指定给构造函数中指定名称的参数赋值 value : 用于提供基本类型和String类型的数据 ref : 用于指定其他的bean类型数据。它指的就是在spring的IOC核心容器出现过的bean对象 特点：在获取 bean 对象时，注入数据是必须的操作，否则无法操作成功 弊端：改变了 bean 对象的实例化方式，使我们在用不到这些数据的情况下也必须提供带参构造函数，因此开发中较少使用此方法，除非避无可避 例： 1234567891011121314151617public class AccountServiceImpl implements IAccountService &#123; // 如果时经常变化的数据不适用于依赖注入，此处仅为演示 private String name; private Integer age; private Date birthday; public AccountServiceImpl(String name, Integer age, Date birthday)&#123; this.name = name; this.age = age; this.birthday = birthday; &#125; public void saveAccount() &#123; System.out.println(&quot;service中的saveaccount()执行了&quot;); &#125;&#125; 测试类： 1234567public static void main(String[] args) &#123; //1.获取核心容器对象 ApplicationContext ac = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;); //2.根据id获取Bean对象 IAccountService as = (IAccountService)ac.getBean(&quot;accountService&quot;); as.saveAccount(); &#125; 配置如下： 123456&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt; &lt;constructor-arg name = &quot;name&quot; value=&quot;taylor&quot;&gt;&lt;/constructor-arg&gt; &lt;constructor-arg name = &quot;age&quot; value = &quot;23&quot;&gt;&lt;/constructor-arg&gt; &lt;constructor-arg name = &quot;birthday&quot; ref = &quot;now&quot;&gt;&lt;/constructor-arg&gt; &lt;/bean&gt; &lt;bean id = &quot;now&quot; class = &quot;java.util.Date&quot;&gt;&lt;/bean&gt; 第一种：使用构造函数提供使用的标签：property 出现的位置：bean 标签的内部 标签的属性： name : 用于指定注入时所使用的 set 方法 value : 用于提供基本类型和 String 类型的数据 ref : 用于指定其他的bean类型数据，它指的就是在 Spring 容器中出现过的bean对象 优势：创建对象时没有明确的限制，可以直接使用默认构造函数 弊端：如果有某个成员必须有值，是有可能 set 方法没有执行 基本类型和 String 的注入方式 业务层 1234567891011121314151617181920212223public class AccountServiceImpl implements IAccountService &#123; // 如果时经常变化的数据不适用于依赖注入，此处仅为演示 private String name; private Integer age; private Date birthday; public void setName(String name) &#123; this.name = name; &#125; public void setAge(Integer age) &#123; this.age = age; &#125; public void setBirthday(Date birthday) &#123; this.birthday = birthday; &#125; public void saveAccount() &#123; System.out.println(&quot;service中的saveaccount()执行了&quot; + name + &quot;,&quot; + age + &quot;,&quot; +birthday); &#125;&#125; 配置bean.xml 1234567&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt; &lt;property name=&quot;name&quot; value =&quot;taylor&quot;&gt;&lt;/property&gt; &lt;property name=&quot;age&quot; value=&quot;21&quot;&gt;&lt;/property&gt; &lt;property name=&quot;birthday&quot; ref=&quot;now&quot;&gt;&lt;/property&gt;&lt;/bean&gt;&lt;bean id = &quot;now&quot; class = &quot;java.util.Date&quot;&gt;&lt;/bean&gt; 测试类同上 复杂集合类型的注入方式 用于给 List 结构集合注入的标签listarrayset 用于给map结构集合注入的标签mapproperties 结构相同，标签可以互换，因此开发中只要记住两组标签即可 编写实例：12345678910111213141516171819202122232425262728293031323334353637public class AccountServiceImpl implements IAccountService &#123; private String[] myStrs; private List&lt;String&gt; myList; private Set&lt;String&gt; mySet; private Map&lt;String, String&gt; myMap; private Properties myProps; public void setMyStrs(String[] myStrs) &#123; this.myStrs = myStrs; &#125; public void setMyList(List&lt;String&gt; myList) &#123; this.myList = myList; &#125; public void setMySet(Set&lt;String&gt; mySet) &#123; this.mySet = mySet; &#125; public void setMyMap(Map&lt;String, String&gt; myMap) &#123; this.myMap = myMap; &#125; public void setMyProps(Properties myProps) &#123; this.myProps = myProps; &#125; public void saveAccount() &#123; System.out.println(Arrays.toString(myStrs)); System.out.println(myList); System.out.println(myMap); System.out.println(mySet); System.out.println(myProps); &#125;&#125; 配置如下： 123456789101112131415161718192021222324252627282930313233343536373839&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt; &lt;property name=&quot;myList&quot;&gt; &lt;list&gt; &lt;value&gt;aaa&lt;/value&gt; &lt;value&gt;bbb&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;property name=&quot;myStrs&quot;&gt; &lt;array&gt; &lt;value&gt;aaa&lt;/value&gt; &lt;value&gt;bbbb&lt;/value&gt; &lt;/array&gt; &lt;/property&gt; &lt;property name=&quot;mySet&quot;&gt; &lt;array&gt; &lt;value&gt;aaa&lt;/value&gt; &lt;value&gt;bbbb&lt;/value&gt; &lt;/array&gt; &lt;/property&gt; &lt;!--以下两种方式等价--&gt; &lt;property name=&quot;myMap&quot;&gt; &lt;map&gt; &lt;!--以下两种配置方式都可以--&gt; &lt;entry key=&quot;testA&quot; value=&quot;aaa&quot;&gt;&lt;/entry&gt; &lt;entry key=&quot;testA&quot;&gt; &lt;value&gt;bbb&lt;/value&gt; &lt;/entry&gt; &lt;/map&gt; &lt;/property&gt; &lt;property name=&quot;myProps&quot;&gt; &lt;props&gt; &lt;prop key=&quot;testB&quot;&gt;bbb&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt;]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+        <tag>框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring入门]]></title>
+    <url>%2F2019%2F05%2F23%2F1%2F</url>
+    <content type="text"><![CDATA[spring入门案例知识点一、 ApplicationContext的三个常用实现类： ClassPathXmlApplicationContext： 它可以加载路径下的配置文件，要求配置文件必须在路径下，否则加载不了 1ApplicationContext ac = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;); FileSyetemXmlApplicationContext：它可以加载磁盘下任意路径下的配置文件（必须有访问权限）加载方式如下： 1ApplicationContext ac = new FileSystemXmlApplicationContext(&quot;C:\\user\\greyson\\...&quot;) AnnotationConfigApplicationContext：它是用于读取注解创建容器的 二、 核心容器的两个接口引发出来的问题 ApplicationContext：它在创建核心容器时，创建对象采取的策略是采用立即加载的方式，也就是说，只要一读取完配置文件就马上创建配置文件中配置的对象 单例对象适用 开发中常采用此接口 BeanFactory: 它在构建核心容器时，创建对象的策略是采用延迟加载的方式，什么时候获取 id 对象了，什么时候就创建对象。 多例对象适用 Spring中Bean的装配与管理三种创建 bean 对象的方式 使用默认构造函数创建 在spring的配置文件中，使用 id 和 class 属性之后，且没有其他属性和标签时，采用的就是默认构造函数创建 bean 对象，此时如果类中没有默认构造函数，则对象无法创建。 1&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;&lt;/bean&gt; 使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入 Spring容器）,如下 12345678/** *模拟一个工厂类，该类可能存在于jar包中，无法通过修改源码的方式来提供默认构造函数 */ public class InstanceFactory &#123; public IAccountService getAccountService() &#123; return new AccountServiceImpl(); &#125; &#125; 配置方式如下： 12&lt;bean id = &quot;instanceFactory&quot; class = &quot;com.itheima.factory.InstanceFactory&quot;&gt;&lt;/bean&gt; &lt;bean id = &quot;accountService&quot; factory-bean=&quot;instanceFactory&quot; factory-method=&quot;getAccountService&quot;&gt;&lt;/bean&gt; 使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入spring容器），如下： 123456public class StaticFactory &#123; public static IAccountService getAccountService() &#123; return new AccountServiceImpl(); &#125;&#125; 配置方式如下： 1&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.factory.StaticFactory&quot; factory-method=&quot;getAccountService&quot;&gt;&lt;/bean&gt; bean 的作用范围调整 bean 标签的 scope 属性 作用：用于指定 bean 的作用范围 取值：常用的就是单例和多例 singletond : 单例的（default） prototype : 多例的 request : 作用于 web 应用的请求范围 session : 作用于 web 应用的会话范围 global-session : 作用于集群的会话范围（全局会话范围），当不是集群范围时，它就是 session bean对象的声明周期 单例对象： 出生：当容器创建时发生 活着：只要容器还在对象就一直活着 死亡：容器销毁，对象消亡 总结：单例对象的声明周期和容器相同 多例对象： 出生：当我们使用对象时 Spring 框架为我们创建 活着：对象只要是在使用过程中就活着 死亡：当对象长时间不用，且没有别的对象引用时，由 Java 的GC回收]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+        <tag>框架</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode---字符串]]></title>
     <url>%2F2019%2F04%2F13%2Fstring%2F</url>
     <content type="text"><![CDATA[字符串简介字符串实际上是一个 unicode 字符数组。 比较函数字符串有它自己的比较函数。 在C++中，我们可以使用 “==” 来比较两个字符串。 在Java中，我们可能无法使用 “==” 来比较两个字符串。当我们使用 “==” 时，它实际上会比较这两个对象是否是同一个对象。我们可以用equal()函数来比较两个字符串。 是否可变不可变意味着一旦字符串被初始化，你就无法改变它的内容。 在某些语言（如 C ++）中，字符串是可变的。 也就是说，你可以像在数组中那样修改字符串。在其他一些语言（如 Java）中，字符串是不可变的。 修改操作不可变字符串无法被修改。只修改其中的一个字符，也必须创建一个新的字符串。你应该非常小心字符串连接。在 Java 中，由于字符串是不可变的，因此在连接时首先为新字符串分配足够的空间，复制旧字符串中的内容并附加到新字符串。因此，总时间复杂度将是O(n2)。 解决方案如果你希望你的字符串是可变的，这里有一些替代方案： 如果你确实希望你的字符串是可变的，则可以将其转换为字符数组。 如果你经常必须连接字符串，最好使用一些其他的数据结构，如 StringBuilder 。 以下代码以 O(n) 的复杂度运行。 区别String、StringBuffer和StringBuilder String：字符串常量，即String对象一旦创建之后该对象是不可更改的，适用于少量的字符串操作的情况。 StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况（线程不安全） StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况（线程安全） 运行速度，或者说是执行速度，在这方面运行速度快慢为：StringBuilder &gt; StringBuffer &gt; String 二进制求和给定两个二进制字符串，返回他们的和（用二进制表示）。 输入为非空字符串且只包含数字 1 和 0。 示例 1:输入: a = “11”, b = “1” 输出: “100” 分析：每次截取最后一位，进行相加。 当和为2时，向前进1，置此位为0 和为3时（后位进了1，且此位是1+1），向前进1，置此位为1 和为0或1时，置此位为和 当最高位需要进1 123456789101112131415161718192021222324252627282930public String addBinary(String a, String b) &#123; String result =&quot;&quot;; int lengthA = a.length(); int lengthB = b.length(); int sum = 0; while (lengthA &gt; 0 || lengthB &gt; 0) &#123; if (lengthA &gt; 0) &#123; sum += Integer.parseInt(a.substring(lengthA-1,lengthA)); lengthA--; &#125; if (lengthB &gt; 0) &#123; sum += Integer.parseInt(b.substring(lengthB-1,lengthB)); lengthB--; &#125; if (sum == 2) &#123; result = &quot;0&quot;+result; sum = 1; &#125; else if (sum == 3) &#123; result = &quot;1&quot; + result; sum = 1; &#125; else &#123; result = (sum + &quot;&quot;) + result; sum = 0; &#125; &#125; if (sum == 1) &#123; result = &quot;1&quot; + result; &#125; return result; &#125; 最长公共前缀编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1:12输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出: &quot;fl&quot; 示例 2:1234输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]输出: &quot;&quot;解释: 输入不存在公共前缀。` 说明:所有输入只包含小写字母 a-z 。 1234567891011121314151617public String longestCommonPrefix(String[] strs) &#123; int count = strs.length; String prefix = &quot;&quot;; if(count != 0)&#123; prefix = strs[0]; &#125; for (int i = 0; i &lt; count; i++) &#123; //关键代码，不断的从后往前截取字符串，然后与之相比，直到startsWith()返回true while (!strs[i].startsWith(prefix)) &#123; //startsWith() 方法用于检测字符串是否以指定的前缀开始 prefix = prefix.substring(0, prefix.length() - 1); //substring()截取字符串 &#125; &#125; return prefix; &#125;]]></content>
@@ -8,9 +34,9 @@
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>LeetCode</tag>
         <tag>Java</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -21,9 +47,9 @@
         <category>LeetCode</category>
       </categories>
       <tags>
+        <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>Java</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -34,9 +60,9 @@
         <category>LeetCode</category>
       </categories>
       <tags>
+        <tag>数组</tag>
         <tag>LeetCode</tag>
         <tag>Java</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>

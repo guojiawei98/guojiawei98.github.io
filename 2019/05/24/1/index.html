@@ -156,13 +156,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="琐事">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+  <meta name="description" content="spring依赖注入（一）、概述 能注入的数据：  基本类型和 String 其他 bean 类型（在配置文件中或者注解中配置过的bean） 复杂类型/集合类型   IOC的作用：减低程序间的耦合（即依赖关系）  在当前类需要用到其他类的对象，由 Spring 为我们提供，而我们在配置文件中说明依赖关系的维护，这种方式就称为依赖注入。 （二）、注入方式  第一种：使用构造函数提供使用的标签：con">
+<meta name="keywords" content="Java,Spring,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring依赖注入">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/1/index.html">
 <meta property="og:site_name" content="琐事">
+<meta property="og:description" content="spring依赖注入（一）、概述 能注入的数据：  基本类型和 String 其他 bean 类型（在配置文件中或者注解中配置过的bean） 复杂类型/集合类型   IOC的作用：减低程序间的耦合（即依赖关系）  在当前类需要用到其他类的对象，由 Spring 为我们提供，而我们在配置文件中说明依赖关系的维护，这种方式就称为依赖注入。 （二）、注入方式  第一种：使用构造函数提供使用的标签：con">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-24T07:33:26.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="琐事">
+<meta name="twitter:title" content="spring依赖注入">
+<meta name="twitter:description" content="spring依赖注入（一）、概述 能注入的数据：  基本类型和 String 其他 bean 类型（在配置文件中或者注解中配置过的bean） 复杂类型/集合类型   IOC的作用：减低程序间的耦合（即依赖关系）  在当前类需要用到其他类的对象，由 Spring 为我们提供，而我们在配置文件中说明依赖关系的维护，这种方式就称为依赖注入。 （二）、注入方式  第一种：使用构造函数提供使用的标签：con">
 
 
 
@@ -171,7 +176,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/03/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/24/1/">
 
 
 
@@ -181,7 +186,7 @@
   };
 </script>
 
-  <title>归档 | 琐事</title>
+  <title>spring依赖注入 | 琐事</title>
   
 
 
@@ -229,7 +234,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -334,7 +339,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -414,104 +419,264 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 6 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/1/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guojiawei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琐事">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/07/1/" itemprop="url">
-              
-                <span itemprop="name">简单的Java分层项目Demo</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">spring依赖注入
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-07T10:25:19+08:00" content="2019-03-07">
-          03-07
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-24 14:41:25" itemprop="dateCreated datePublished" datetime="2019-05-24T14:41:25+08:00">2019-05-24</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="spring依赖注入"><a href="#spring依赖注入" class="headerlink" title="spring依赖注入"></a>spring依赖注入</h1><h2 id="（一）、概述"><a href="#（一）、概述" class="headerlink" title="（一）、概述"></a>（一）、概述</h2><ol>
+<li><p>能注入的数据：</p>
+<ul>
+<li>基本类型和 String</li>
+<li>其他 bean 类型（在配置文件中或者注解中配置过的bean）</li>
+<li>复杂类型/集合类型</li>
+</ul>
+</li>
+<li><p>IOC的作用：减低程序间的耦合（即依赖关系）</p>
+<p> 在当前类需要用到其他类的对象，由 Spring 为我们提供，而我们在配置文件中说明依赖关系的维护，这种方式就称为依赖注入。</p>
+<h2 id="（二）、注入方式"><a href="#（二）、注入方式" class="headerlink" title="（二）、注入方式"></a>（二）、注入方式</h2></li>
+</ol>
+<h3 id="第一种：使用构造函数提供"><a href="#第一种：使用构造函数提供" class="headerlink" title="第一种：使用构造函数提供"></a>第一种：使用构造函数提供</h3><p>使用的标签：constructor-arg</p>
+<p>标签所在位置：bean 标签的内部</p>
+<p>标签中的属性：</p>
+<ul>
+<li>type : 用于指定要注入的数据类型，该类型也是构造函数中某个或某些参数的类型</li>
+<li>index : 用于指定要注入的数据给构造函数中指定索引位置的参数赋值，索引的位置时从0开始</li>
+<li>name(常用) : 用于指定给构造函数中指定名称的参数赋值</li>
+<li>value : 用于提供基本类型和String类型的数据</li>
+<li>ref : 用于指定其他的bean类型数据。它指的就是在spring的IOC核心容器出现过的bean对象</li>
+</ul>
+<p>特点：在获取 bean 对象时，注入数据是必须的操作，否则无法操作成功</p>
+<p>弊端：改变了 bean 对象的实例化方式，使我们在用不到这些数据的情况下也必须提供带参构造函数，因此开发中较少使用此方法，除非避无可避</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line">    // 如果时经常变化的数据不适用于依赖注入，此处仅为演示</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Date birthday;</span><br><span class="line"></span><br><span class="line">    public AccountServiceImpl(String name, Integer age, Date birthday)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.birthday = birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void  saveAccount() &#123;</span><br><span class="line">        System.out.println(&quot;service中的saveaccount()执行了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        //1.获取核心容器对象</span><br><span class="line">        ApplicationContext ac = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        //2.根据id获取Bean对象</span><br><span class="line">        IAccountService as  = (IAccountService)ac.getBean(&quot;accountService&quot;);</span><br><span class="line">        as.saveAccount();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>配置如下：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name = &quot;name&quot; value=&quot;taylor&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">        &lt;constructor-arg name = &quot;age&quot; value = &quot;23&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">        &lt;constructor-arg name = &quot;birthday&quot; ref = &quot;now&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"> &lt;bean id = &quot;now&quot; class = &quot;java.util.Date&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="第一种：使用构造函数提供-1"><a href="#第一种：使用构造函数提供-1" class="headerlink" title="第一种：使用构造函数提供"></a>第一种：使用构造函数提供</h3><p>使用的标签：property</p>
+<p>出现的位置：bean 标签的内部</p>
+<p>标签的属性：</p>
+<ul>
+<li><p>name : 用于指定注入时所使用的 set 方法</p>
+</li>
+<li><p>value : 用于提供基本类型和 String 类型的数据</p>
+</li>
+<li><p>ref : 用于指定其他的bean类型数据，它指的就是在 Spring 容器中出现过的bean对象</p>
+</li>
+</ul>
+<p>优势：创建对象时没有明确的限制，可以直接使用默认构造函数</p>
+<p>弊端：如果有某个成员必须有值，是有可能 set 方法没有执行</p>
+<ol>
+<li>基本类型和 String 的注入方式</li>
+</ol>
+<p>业务层</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line">    // 如果时经常变化的数据不适用于依赖注入，此处仅为演示</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Date birthday;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(Integer age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBirthday(Date birthday) &#123;</span><br><span class="line">        this.birthday = birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void  saveAccount() &#123;</span><br><span class="line">        System.out.println(&quot;service中的saveaccount()执行了&quot; + name + &quot;,&quot; + age + &quot;,&quot; +birthday);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置bean.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">      &lt;property name=&quot;name&quot; value =&quot;taylor&quot;&gt;&lt;/property&gt;</span><br><span class="line">      &lt;property name=&quot;age&quot; value=&quot;21&quot;&gt;&lt;/property&gt;</span><br><span class="line">      &lt;property name=&quot;birthday&quot; ref=&quot;now&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;bean id = &quot;now&quot; class = &quot;java.util.Date&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>测试类同上</p>
+<ol start="2">
+<li>复杂集合类型的注入方式</li>
+</ol>
+<p>用于给 List 结构集合注入的标签<br>list<br>array<br>set</p>
+<p>用于给map结构集合注入的标签<br>map<br>properties</p>
+<p>结构相同，标签可以互换，因此开发中只要记住两组标签即可</p>
+<p>编写实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class AccountServiceImpl implements IAccountService &#123;</span><br><span class="line"></span><br><span class="line">    private String[] myStrs;</span><br><span class="line">    private List&lt;String&gt; myList;</span><br><span class="line">    private Set&lt;String&gt; mySet;</span><br><span class="line">    private Map&lt;String, String&gt; myMap;</span><br><span class="line">    private Properties myProps;</span><br><span class="line"></span><br><span class="line">    public void setMyStrs(String[] myStrs) &#123;</span><br><span class="line">        this.myStrs = myStrs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMyList(List&lt;String&gt; myList) &#123;</span><br><span class="line">        this.myList = myList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMySet(Set&lt;String&gt; mySet) &#123;</span><br><span class="line">        this.mySet = mySet;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMyMap(Map&lt;String, String&gt; myMap) &#123;</span><br><span class="line">        this.myMap = myMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setMyProps(Properties myProps) &#123;</span><br><span class="line">        this.myProps = myProps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void  saveAccount() &#123;</span><br><span class="line">        System.out.println(Arrays.toString(myStrs));</span><br><span class="line">        System.out.println(myList);</span><br><span class="line">        System.out.println(myMap);</span><br><span class="line">        System.out.println(mySet);</span><br><span class="line">        System.out.println(myProps);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = &quot;accountService&quot; class = &quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt;</span><br><span class="line">     &lt;property name=&quot;myList&quot;&gt;</span><br><span class="line">         &lt;list&gt;</span><br><span class="line">             &lt;value&gt;aaa&lt;/value&gt;</span><br><span class="line">             &lt;value&gt;bbb&lt;/value&gt;</span><br><span class="line">         &lt;/list&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> </span><br><span class="line">     &lt;property name=&quot;myStrs&quot;&gt;</span><br><span class="line">         &lt;array&gt;</span><br><span class="line">             &lt;value&gt;aaa&lt;/value&gt;</span><br><span class="line">             &lt;value&gt;bbbb&lt;/value&gt;</span><br><span class="line">         &lt;/array&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> </span><br><span class="line">     &lt;property name=&quot;mySet&quot;&gt;</span><br><span class="line">         &lt;array&gt;</span><br><span class="line">             &lt;value&gt;aaa&lt;/value&gt;</span><br><span class="line">             &lt;value&gt;bbbb&lt;/value&gt;</span><br><span class="line">         &lt;/array&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> </span><br><span class="line">     &lt;!--以下两种方式等价--&gt;</span><br><span class="line">     &lt;property name=&quot;myMap&quot;&gt;</span><br><span class="line">         &lt;map&gt;</span><br><span class="line">             &lt;!--以下两种配置方式都可以--&gt;</span><br><span class="line">             &lt;entry key=&quot;testA&quot; value=&quot;aaa&quot;&gt;&lt;/entry&gt;</span><br><span class="line">             &lt;entry key=&quot;testA&quot;&gt;</span><br><span class="line">                 &lt;value&gt;bbb&lt;/value&gt;</span><br><span class="line">             &lt;/entry&gt;</span><br><span class="line">         &lt;/map&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> </span><br><span class="line">     &lt;property name=&quot;myProps&quot;&gt;</span><br><span class="line">         &lt;props&gt;</span><br><span class="line">             &lt;prop key=&quot;testB&quot;&gt;bbb&lt;/prop&gt;</span><br><span class="line">         &lt;/props&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/框架/" rel="tag"># 框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/23/1/" rel="next" title="spring入门">
+                <i class="fa fa-chevron-left"></i> spring入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  <div>
+      
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+              -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+        </div>
+    
+</div>
+      
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -534,8 +699,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -645,6 +819,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spring依赖注入"><span class="nav-text">spring依赖注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）、概述"><span class="nav-text">（一）、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）、注入方式"><span class="nav-text">（二）、注入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种：使用构造函数提供"><span class="nav-text">第一种：使用构造函数提供</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种：使用构造函数提供-1"><span class="nav-text">第一种：使用构造函数提供</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -791,6 +981,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
