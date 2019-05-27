@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="琐事">
 <meta property="og:description" content="AOP ( 面向切面编程 ) 的概念1、什么是AOP?在单体架构下的软件开发中，一个大型项目通常是依照功能拆分成各个模块。但是如日志、安全和事务管理此类重要且繁琐的开发却没有必要参与到各个模块中，将这些功能与业务逻辑相关的模块分离就是面向切面编程所要解决的问题 AOP采取的是横向抽取机制，取代了传统纵向继承体系重复性代码。 2、那么何为软件的横向和纵向？从纵向结构来看就是我们软件的各个模块，它所负">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-27T07:32:12.954Z">
+<meta property="og:updated_time" content="2019-05-27T07:54:33.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring AOP">
 <meta name="twitter:description" content="AOP ( 面向切面编程 ) 的概念1、什么是AOP?在单体架构下的软件开发中，一个大型项目通常是依照功能拆分成各个模块。但是如日志、安全和事务管理此类重要且繁琐的开发却没有必要参与到各个模块中，将这些功能与业务逻辑相关的模块分离就是面向切面编程所要解决的问题 AOP采取的是横向抽取机制，取代了传统纵向继承体系重复性代码。 2、那么何为软件的横向和纵向？从纵向结构来看就是我们软件的各个模块，它所负">
@@ -610,7 +610,13 @@
 <li>后置通知（aop : after-returning）：在切入点方法正常执行之后执行，它和异常通知永远只能执行一个</li>
 <li>异常通知（aop : after-throwing）：在切入点方法执行产生异常之后执行，它和后置通知永远只能执行一个</li>
 <li>最终通知（aop : after）：无论切入点方法是否正常执行它都会在其后面执行</li>
-<li>环绕通知</li>
+<li>环绕通知（aop : around）: <ul>
+<li>问题：当配置了环绕通知后，切入点方法没有执行，而通知方法执行了</li>
+<li>分析：通过对比动态代理中的环绕通知代码，发现动态代理的环绕通知有明确的切入点方法调用，而我们的代码中没有。</li>
+<li>解决：spring框架提供一个接口，ProceedingJoinPoint。该接口的一个方法proceed()，此方法就相当于明确调用切入点方法，该接口可以作为环绕通知的方法参数，在程序执行时，spring框架会为我们提供该接口的实现类供我们使用。</li>
+<li>它是spring框架为我们提供的一种可以在代码中手动控制增强方法何时执行的方式。</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
